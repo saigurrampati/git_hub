@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATING A PR</title>
+</head>
+<body>
+<h1>Pull Request</h1>
+<form action="/gitapp/{{name}}/pull_details/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    Title : <input type="text" name="title"><br><br>
+    Body : <input type="text" name="body"><br>
+<br>
+    Target : <select name="target" id="target">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select><br>
+    <br>
+     Source : <select name="source" id="source">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select><br>
+    <br>
+    <input type="submit" name="submit">
+</form>
+<form>
+    <br>
+ <input type="button" value="Go back!" onclick="history.back()">
+</form>
+</body>
+</html>

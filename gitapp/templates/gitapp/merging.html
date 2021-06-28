@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merge inputs</title>
+</head>
+<body>
+<h1> Merging Branches</h1>
+<form action="/gitapp/{{name}}/merge/" method="post" enctype="multipart/form-data>">
+  {% csrf_token %}
+    Source : <select name="source" id="source">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select><br>
+    <br>
+  target : <select name="target" id="target"><br>
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select><br>
+    <br>
+<input type="submit" name="merge">
+</form>
+</body>
+</html>

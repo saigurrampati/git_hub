@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Branches</title>
+</head>
+<body>
+{{msg}}<br>
+<h1>Adding New Branch</h1>
+<form action="/gitapp/{{name}}/create_branch/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  Source Branch: <select name="source" id="source">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select><br><br>
+  New Branch : <input type="text" name="new_branch"><br><br>
+  <input type="submit"><br>
+</form>
+<form>
+ <br><input type="button" value="Go back!" onclick="history.back()">
+</form>
+</body>
+</html>

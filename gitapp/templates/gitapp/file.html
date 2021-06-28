@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page for file</title>
+</head>
+<body>
+<h1> Adding File in Branch</h1>
+<form action="/gitapp/{{name}}/file/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    Banches :<select name="source" id="source">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+</select>
+    <br><br>
+    file : <input type="file" name="file"><br><br>
+    msg : <input type="text" name="msg"><br><br>
+    commit : <input type="text" name="commit"><br><br>
+    <input type="submit" name="submit">
+</form>
+<form>
+    <input type="button" value="Go back" onclick="history.back()">
+</form>
+</body>
+</html>

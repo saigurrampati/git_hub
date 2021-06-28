@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Delete Branch</h1>
+<form action="/gitapp/{{name}}/delete/" method="post">
+    {% csrf_token %}
+    Delete Branch : <select name="source" id="source"><br>
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+  </select>
+<input type="submit" name="delete" value="delete">
+</form>
+<form>
+ <input type="button" value="Go back!" onclick="history.back()">
+</form>
+</body>
+</html>

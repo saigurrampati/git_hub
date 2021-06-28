@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>{{name}}'s Repositories List</h1>
+{% for repos in total %}
+            <a href="/gitapp/{{repos.name}}/reposit_details/">{{repos.name}}</a> <br>
+{% endfor %}
+<br>
+<a href="/gitapp/logout"><button>Logout </button></a>
+</body>
+</html>

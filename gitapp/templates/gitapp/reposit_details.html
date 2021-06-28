@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{text}}
+<h1>Details of {{repo.name}} repository </h1>
+For Create New Branch :  <a href="/gitapp/{{repo.name}}/data/">create branch</a>
+<form action="/gitapp/{{repo.name}}/reposit_details/" method="post">
+    {% csrf_token %}
+    <br>
+For Create New File :    <a href="/gitapp/{{repo.name}}/file_details/">create file</a><br><br>
+For Pull Request  :      <a href="/gitapp/{{repo.name}}/pull_request/">Pull Request</a><br><br>
+For Merging  :  <a href="/gitapp/{{repo.name}}/merging/">merge</a><br><br>
+For Delete Branch ::<a href="/gitapp/{{repo.name}}/del_branch/">delete_branch</a><br><br>
+
+    <br>
+    <br>
+    {% for pull in pulls %}
+        {{pull}}<br>
+    {% endfor %}
+    <br><br>
+
+Banches : <select name="source" id="source">
+    {% for branch in branches %}
+  <option value="{{branch.name}}">{{branch.name}}</option>
+    {% endfor %}
+</select>
+    <br><br>
+Click  :   <input type="submit" value="submit">
+    </form>
+<br>
+ {% for file in files%}
+    {{file.name}}<br>
+    {% endfor %}
+<!--    <br><a href="/gitapp/{{repo.name}}/file_details/">create file</a>-->
+
+<form>
+ <br><input type="button" value="Back" onclick="history.back()">
+</form>
+</body>
+</html>
